@@ -18,7 +18,7 @@ export default function HeroSlider() {
       </div>
 
       <div className="absolute inset-0 flex flex-col text-white pl-4 top-[20%] sm:top-[25%]">
-        <h1 className="mb-4 text-3xl sm:text-5xl lg:text-8xl">GNB-PROTECT</h1>
+        <h1 className="mb-2 text-4xl sm:text-5xl lg:text-8xl">GNB-PROTECT</h1>
         <h2 className="text-base sm:text-2xl lg:text-4xl">Votre partenaire de confiance</h2>
       </div>
       <div className="absolute inset-0 flex flex-col justify-center top-60 sm:top-[250px] lg:top-[450px] xl:top-[350px]">
