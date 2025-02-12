@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-typekit;
+  }
+
+  h1 {
+    @apply text-4xl font-bold mb-4;
+  }
+  h2 {
+    @apply text-3xl font-semibold mb-4;
+  }
+  h3 {
+    @apply text-2xl font-semibold mb-3;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-lg transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-dark-green text-white hover:bg-opacity-90 hover:scale-105 border border-[rgba(255,255,255,0.18)];
+  }
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4;
+}
