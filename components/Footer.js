@@ -35,12 +35,12 @@ export default function Footer() {
             <div className="space-y-2 place-items-center">
               <p className="flex items-center">
                 <Phone className="mr-2" size={18} />
-                <a href="tel:+33123456789">01 23 45 67 89</a>
+                <a href="tel:+33123456789">06 28 71 62 82</a>
               </p>
               <p className="flex items-center">
                 <Mail className="mr-2" size={18} />
-                <a href="mailto:contact@gnb-protect.fr">
-                  contact@gnb-protect.fr
+                <a href="mailto:gnb.protect@gmail.com">
+                  gnb.protect@gmail.com
                 </a>
               </p>
             </div>
