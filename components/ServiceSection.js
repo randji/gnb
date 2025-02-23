@@ -2,13 +2,13 @@ import Image from "next/image";
 
 const services = [
   {
-    title: "VIDEOSURVEILLANCE",
+    title: "VIDEO PROTECTION",
     description: "Solutions de surveillance vidéo professionnelles",
-    image: "/imgGnb/videosurveillance.jpeg",
+    image: "/imgGnb/videoProtec2.jpeg",
     icon: "/icon/icon1.png",
   },
   {
-    title: "SECURITE",
+    title: "ALARME CONNECTEE",
     description: "Systèmes de sécurité avancés",
     image: "/imgGnb/securite1.jpeg",
     icon: "/icon/icon2.png",
@@ -48,7 +48,7 @@ export default function ServiceSection() {
                   src={service.image}
                   alt={service.title}
                   // fill
-                  width={400}
+                  width={300}
                   height={100}
                   className=" h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
                 />

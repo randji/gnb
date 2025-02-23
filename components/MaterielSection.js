@@ -2,28 +2,24 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
 const materiels = [
+
   {
     id: 1,
-    name: "Aiphone",
-    image: "/materiel/aiphone-kit-audio.png",
-  },
-  {
-    id: 2,
     name: "Ajax",
     image: "/materiel/ajax-650x468.png",
   },
   {
-    id: 3,
+    id: 2,
     name: "Dahua",
     image: "/materiel/Dahua-LOGO_black_with_red_D.png",
   },
   {
-    id: 4,
-    name: "Legrand",
-    image: "/materiel/Legrand-Logo.jpg",
+    id: 3,
+    name: "hikvision",
+    image: "/materiel/Hikvision_logo_shadow.webp",
   },
   {
-    id: 5,
+    id: 4,
     name: "Risco",
     image: "/materiel/166.png"
   }
@@ -65,8 +61,8 @@ export default function MaterielSection() {
                   src={materiel.image}
                   alt={materiel.name}
                   width={200}
-                  height={100}
-                  className="object-contain w-full h-24"
+                  height={200}
+                  className="object-contain w-full h-10"
                 />
               </div>
             </div>
