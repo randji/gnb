@@ -1,14 +1,22 @@
 import Image from "next/image";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+// Enregistrement du plugin ScrollTrigger
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const services = [
   {
-    title: "VIDEO PROTECTION",
+    title: "VIDEOSURVEILLANCE",
     description: "Solutions de surveillance vidéo professionnelles",
-    image: "/imgGnb/videoProtec2.jpeg",
+    image: "/imgGnb/videosurveillance.jpeg",
     icon: "/icon/icon1.png",
   },
   {
-    title: "ALARME CONNECTEE",
+    title: "SECURITE",
     description: "Systèmes de sécurité avancés",
     image: "/imgGnb/securite1.jpeg",
     icon: "/icon/icon2.png",
@@ -22,13 +30,62 @@ const services = [
 ];
 
 export default function ServiceSection() {
+  const sectionRef = useRef(null);
+  const cardsRef = useRef([]);
+
+  // Réinitialiser les références lors du rendu
+  cardsRef.current = [];
+
+  // Ajouter les éléments à la liste des refs
+  const addToRefs = (el) => {
+    if (el && !cardsRef.current.includes(el)) {
+      cardsRef.current.push(el);
+    }
+  };
+
+  useEffect(() => {
+    // Vérification si nous sommes côté client (browser)
+    if (typeof window === "undefined") return;
+
+    // Animation des cartes avec GSAP et ScrollTrigger
+    cardsRef.current.forEach((card, index) => {
+      // Configuration initiale des cartes
+      gsap.set(card, {
+        opacity: 0,
+        y: 100,
+      });
+
+      // Animation au scroll
+      gsap.to(card, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "linear",
+        delay: index * 0.2,
+        scrollTrigger: {
+          trigger: card,
+          start: "top bottom-=100",
+          end: "top center",
+          toggleActions: "play none none none",
+          // markers: true,
+        },
+      });
+    });
+
+    // Nettoyage
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
-    <section className="py-16 px-4 bg-white">
+    <section ref={sectionRef} className="py-16 px-4 bg-white">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div
               key={index}
+              ref={addToRefs}
               className="group p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <div className="mb-4 relative w-20 h-20">
@@ -47,10 +104,9 @@ export default function ServiceSection() {
                 <Image
                   src={service.image}
                   alt={service.title}
-                  // fill
-                  width={300}
-                  height={100}
-                  className=" h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+                  width={400}
+                  height={300}
+                  className="h-full w-full object-cover transform group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
             </div>
