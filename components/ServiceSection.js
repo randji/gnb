@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -43,40 +44,34 @@ export default function ServiceSection() {
     }
   };
 
-  useEffect(() => {
-    // Vérification si nous sommes côté client (browser)
-    if (typeof window === "undefined") return;
+  useGSAP(
+    () => {
+      cardsRef.current.forEach((card, index) => {
+        // Configuration initiale des cartes
+        gsap.set(card, {
+          opacity: 0,
+          y: 100,
+        });
 
-    // Animation des cartes avec GSAP et ScrollTrigger
-    cardsRef.current.forEach((card, index) => {
-      // Configuration initiale des cartes
-      gsap.set(card, {
-        opacity: 0,
-        y: 100,
+        // Animation au scroll
+        gsap.to(card, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "linear",
+          delay: index * 0.2,
+          scrollTrigger: {
+            trigger: card,
+            start: "top bottom-=100",
+            end: "top center",
+            toggleActions: "play none none none",
+            markers: true,
+          },
+        });
       });
-
-      // Animation au scroll
-      gsap.to(card, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "linear",
-        delay: index * 0.2,
-        scrollTrigger: {
-          trigger: card,
-          start: "top bottom-=100",
-          end: "top center",
-          toggleActions: "play none none none",
-          // markers: true,
-        },
-      });
-    });
-
-    // Nettoyage
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
+    },
+    { scope: sectionRef }
+  ); // scope permet de limiter les animations à cette section
 
   return (
     <section ref={sectionRef} className="py-16 px-4 bg-white">
