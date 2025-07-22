@@ -65,7 +65,7 @@ export default function ServiceSection() {
             start: "top bottom-=100",
             end: "top center",
             toggleActions: "play none none none",
-            markers: true,
+            markers: false,
           },
         });
       });
