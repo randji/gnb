@@ -59,76 +59,83 @@ export default function FormSection() {
         <div className="absolute inset-0" />
       </div>
       <div className="container mx-auto px-4 relative text-white">
-        <h2 className="text-center mb-12">Contactez-nous</h2>
-        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block mb-2">Nom</label>
-              <input
-                type="text"
-                name="nom"
-                value={formData.nom}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent-yellow"
-              />
+        <h2 className="form-title text-center mb-12 text-3xl font-bold">
+          Contactez-nous
+        </h2>
+        <div className="max-w-2xl mx-auto">
+          <form onSubmit={handleSubmit} className="contact-form space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block mb-2">Nom</label>
+                <input
+                  type="text"
+                  name="nom"
+                  value={formData.nom}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent-yellow"
+                />
+              </div>
+              <div>
+                <label className="block mb-2">Prénom</label>
+                <input
+                  type="text"
+                  name="prenom"
+                  value={formData.prenom}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent-yellow"
+                />
+              </div>
             </div>
-            <div>
-              <label className="block mb-2">Prénom</label>
-              <input
-                type="text"
-                name="prenom"
-                value={formData.prenom}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent-yellow"
-              />
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block mb-2">Téléphone</label>
+                <input
+                  type="tel"
+                  name="telephone"
+                  value={formData.telephone}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent-yellow"
+                />
+              </div>
+              <div>
+                <label className="block mb-2">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent-yellow"
+                />
+              </div>
+            </div>
+
             <div>
-              <label className="block mb-2">Téléphone</label>
-              <input
-                type="tel"
-                name="telephone"
-                value={formData.telephone}
+              <label className="block mb-2">Message</label>
+              <textarea
+                name="message"
+                value={formData.message}
                 onChange={handleChange}
                 required
+                rows="6"
                 className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent-yellow"
-              />
+              ></textarea>
             </div>
-            <div>
-              <label className="block mb-2">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent-yellow"
-              />
+
+            <div className="text-center">
+              <button
+                type="submit"
+                className="btn btn-primary bg-dark-green text-white px-8 py-3 rounded-lg hover:bg-green-800 transition-colors"
+              >
+                Envoyer
+              </button>
             </div>
-          </div>
-
-          <div>
-            <label className="block mb-2">Message</label>
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              rows="6"
-              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent-yellow"
-            ></textarea>
-          </div>
-
-          <div className="text-center">
-            <button type="submit" className="btn btn-primary">
-              Envoyer
-            </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </section>
   );

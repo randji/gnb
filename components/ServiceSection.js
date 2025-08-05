@@ -81,7 +81,7 @@ export default function ServiceSection() {
             <div
               key={index}
               ref={addToRefs}
-              className="group p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              className="service-card group p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <div className="mb-4 relative w-20 h-20">
                 <Image
@@ -92,8 +92,12 @@ export default function ServiceSection() {
                   className="object-contain w-20 h-20"
                 />
               </div>
-              <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-              <p className="text-gray-600">{service.description}</p>
+              <h3 className="service-title text-xl font-semibold mb-3">
+                {service.title}
+              </h3>
+              <p className="service-description text-gray-600">
+                {service.description}
+              </p>
               <div className="mt-4 h-48 relative overflow-hidden rounded-lg">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
                 <Image

@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import des animations personnalisées */
+@import "./animations.css";
+
 @layer base {
   body {
     @apply font-typekit;

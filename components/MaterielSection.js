@@ -1,8 +1,7 @@
-import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 const materiels = [
-
   {
     id: 1,
     name: "Ajax",
@@ -21,8 +20,8 @@ const materiels = [
   {
     id: 4,
     name: "Risco",
-    image: "/materiel/166.png"
-  }
+    image: "/materiel/166.png",
+  },
 ];
 
 export default function MaterielSection() {
@@ -33,14 +32,14 @@ export default function MaterielSection() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('opacity-100', 'translate-y-0');
+            entry.target.classList.add("opacity-100", "translate-y-0");
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    const elements = sectionRef.current.querySelectorAll('.materiel-item');
+    const elements = sectionRef.current.querySelectorAll(".materiel-item");
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
@@ -49,12 +48,16 @@ export default function MaterielSection() {
   return (
     <section ref={sectionRef} className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-center mb-12">Nos Partenaires</h2>
+        <h2 className="materiel-title text-center mb-12">Nos Partenaires</h2>
+        <p className="materiel-description text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+          Nous travaillons avec les meilleurs fabricants du marché pour vous
+          garantir des solutions de qualité professionnelle.
+        </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {materiels.map((materiel) => (
             <div
               key={materiel.id}
-              className="materiel-item opacity-0 translate-y-4 transition-all duration-300 ease-out"
+              className="materiel-card materiel-item opacity-0 translate-y-4 transition-all duration-300 ease-out"
             >
               <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                 <Image
@@ -71,4 +74,4 @@ export default function MaterielSection() {
       </div>
     </section>
   );
-} 
+}
