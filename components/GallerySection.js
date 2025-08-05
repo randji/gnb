@@ -11,7 +11,7 @@ const images = [
 
 export default function GallerySection() {
   const [currentImage, setCurrentImage] = useState(0);
-  const intervalRef = useRef(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const goToNext = () => {
     setCurrentImage((prev) => (prev + 1) % images.length);
@@ -26,12 +26,23 @@ export default function GallerySection() {
   };
 
   useEffect(() => {
+    // Attendre que le composant soit monté avant de démarrer le défilement
+    const initialDelay = setTimeout(() => {
+      setIsLoaded(true);
+    }, 1000);
+
+    return () => clearTimeout(initialDelay);
+  }, []);
+
+  useEffect(() => {
+    if (!isLoaded) return;
+
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
     }, 4000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [isLoaded]);
 
   return (
     <section className="py-16 bg-gray-50">
@@ -40,14 +51,14 @@ export default function GallerySection() {
           Nos Réalisations
         </h2>
 
-        <div className="relative overflow-hidden rounded-lg shadow-lg group max-w-4xl mx-auto">
+        <div className="relative overflow-hidden rounded-lg shadow-lg group max-w-2xl mx-auto">
           {/* Images */}
           {images.map((image, index) => (
             <div
               key={image.id}
               className={`gallery-image transition-opacity duration-700 ease-in-out ${
                 index === currentImage
-                  ? "opacity-100"
+                  ? "opacity-100 relative"
                   : "opacity-0 absolute inset-0"
               }`}
             >
